@@ -23,9 +23,9 @@ test('parametrized methods', async ({page}) => {
     await pm.navigateTo().formLayoutsPage()
     await pm.onFormLayoutsPage().submitUsingTheGridFormWithCredentialsAndSelectOption('test@test.com', 'welcome1', 'Option 2')
     await pm.onFormLayoutsPage().submitInlineFormWithNameAndEmailAndCheckbox(randomFullName, randomEmail, false)
-    // await pm.navigateTo().datePickerPage()
-    // await pm.onDatepickerPage().selectCommonDatepickerDateFromToday(5)
-    // await pm.onDatepickerPage().selectDatepickerWithRangeFromToday(6, 15)
+    await pm.navigateTo().datePickerPage()
+    await pm.onDatepickerPage().selectCommonDatepickerDateFromToday(5)
+    await pm.onDatepickerPage().selectDatepickerWithRangeFromToday(6, 15)
 })
 
 

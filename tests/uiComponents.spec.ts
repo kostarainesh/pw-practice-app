@@ -1,10 +1,12 @@
 import {test, expect} from '@playwright/test'
 
+test.describe.configure({mode: 'parallel'})
+
 test.beforeEach(async ({page}) => {
     await page.goto('http://localhost:4200/')
 })
 
-test.describe.only('Form layouts page', () => {
+test.describe('Form layouts page', () => {
     test.describe.configure({retries: 2})
     test.beforeEach(async ({page}) => {
         await page.getByText('Forms').click()
@@ -18,7 +20,7 @@ test.describe.only('Form layouts page', () => {
         const usingTheGridEmailInput = page.locator('nb-card', {hasText:"Using the Grid"}).getByRole('textbox', {name:"Email"})
         await usingTheGridEmailInput.fill('test@test.com')
         await usingTheGridEmailInput.clear()
-        await usingTheGridEmailInput.pressSequentially('test2@test.com', {delay: 500})
+        await usingTheGridEmailInput.pressSequentially('test2@test.com')
 
         //generic assertion
         const inputValue = await usingTheGridEmailInput.inputValue()
