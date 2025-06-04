@@ -21,7 +21,7 @@ test('parametrized methods', async ({page}) => {
     const randomEmail = `${randomFullName.replace(' ', '')}${faker.number.int(1000)}@test.com`
 
     await pm.navigateTo().formLayoutsPage()
-    await pm.onFormLayoutsPage().submitUsingTheGridFormWithCredentialsAndSelectOption('test@test.com', 'welcome1', 'Option 2')
+    await pm.onFormLayoutsPage().submitUsingTheGridFormWithCredentialsAndSelectOption(process.env.USERNAME, process.env.PASSWORD, 'Option 2')
     await page.screenshot({path: 'screenshots/formsLayoutsPage.png'})
     // const buffer = await page.screenshot()
     // console.log(buffer.toString('base64')) if we need it in binary and integrade somewhere else
